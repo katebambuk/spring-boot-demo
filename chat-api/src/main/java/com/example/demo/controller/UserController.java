@@ -31,9 +31,8 @@ public class UserController {
         return userService.checkUsersCreds(userDto);
     }
 
-
     @PostMapping("/sign-up")
-    public UserDto registerNewUser(@RequestBody UserDto userDto) {
+    public boolean registerNewUser(@RequestBody UserDto userDto) {
         return userService.registerNewUser(userDto);
     }
 

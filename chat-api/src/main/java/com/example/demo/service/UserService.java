@@ -23,20 +23,24 @@ public class UserService {
     public List<String> findAllRegisteredUsersLogins() {
         List<User> users = userRepository.findAll();
 
-        // todo order by last sended message
+        // todo order by last send message
         return users.stream()
-                .map(user -> user.getLogin())
+                .map(User::getLogin)
                 .collect(Collectors.toList());
     }
 
-    public UserDto registerNewUser(UserDto userDto) {
+    public boolean registerNewUser(UserDto userDto) {
         User user = new User()
                 .setLogin(userDto.getLogin())
                 .setPassword(userDto.getPassword());
 
-        userRepository.save(user); // todo case if user already exists or we can't save in
-
-        return userDto;
+        try {
+            userRepository.save(user); // todo case if user already exists or we can't save in
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean checkUsersCreds(UserDto userDto) {
