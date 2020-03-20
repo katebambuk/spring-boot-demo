@@ -4,10 +4,6 @@ import './ErrorModal.css';
 
 class ErrorModal extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

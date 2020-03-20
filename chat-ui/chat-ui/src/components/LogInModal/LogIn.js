@@ -41,9 +41,13 @@ class LogIn extends Component {
                     authResult: data,
                     showErrorModal: !data,
                 });
-            });
 
+                if (this.state.authResult) {
+                    window.open(`${window.location.origin}/main`,"_self")
+                }
+            });
     }
+
 
     handleChangeUsername(e) {
         this.setState({username: e.target.value});
